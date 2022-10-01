@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { countriesAPI } from './reducers/countriesAPI';
+import sortReducer from './reducers/sort';
 
 const rootReducer = combineReducers({
   [countriesAPI.reducerPath]: countriesAPI.reducer,
+  sort: sortReducer,
 });
 
 export const store = configureStore({

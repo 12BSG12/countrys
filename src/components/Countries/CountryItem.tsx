@@ -16,9 +16,18 @@ const CartImg = styled.div`
 `;
 const CartInfo = styled.div`
   padding: 2rem;
+  h2{
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
   div{
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
+    &:last-child{
+      margin-bottom: 0;
+    }
   }
   span{
     padding-right: 1rem;
