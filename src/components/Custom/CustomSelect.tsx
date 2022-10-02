@@ -43,4 +43,8 @@ export const CustomSelect = styled(Select).attrs({
     background-color: var(--colors-ui-base);
     box-shadow: var(--shadow);
   }
+  svg{
+    position: relative;
+    z-index: 1;
+  }
 `;

@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 export const Controls = () => {
   const options = [
     { value: 'africa', label: 'Africa' },
-    { value: 'america', label: 'America' },
+    { value: 'americas', label: 'Americas' },
     { value: 'asia', label: 'Asia' },
     { value: 'europe', label: 'Europe' },
     { value: 'oceania', label: 'Oceania' },
@@ -54,7 +54,7 @@ export const Controls = () => {
         placeholder="Filter by Region..."
         isClearable
         defaultValue={region}
-        onChange={(e: any) => dispatch(setRegion(e.value))}
+        onChange={(e: any) => dispatch(setRegion(e?.value))}
       />
     </Wrapper>
   );
