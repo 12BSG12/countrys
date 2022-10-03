@@ -1,11 +1,8 @@
-import { useState, useCallback } from 'react';
 import { Search } from '../Search/Search';
 import styled from 'styled-components';
 import { CustomSelect } from '../Custom/CustomSelect';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { setSearchText, setRegion } from '../../redux/reducers/sort';
-import { debounce } from 'lodash'
-import { ActionMeta, OnChangeValue } from 'react-select';
+import { setRegion } from '../../redux/reducers/app';
 
 const Wrapper = styled.div`
   display: flex;
@@ -29,26 +26,13 @@ export const Controls = () => {
     { value: 'oceania', label: 'Oceania' },
   ];
   const dispatch = useAppDispatch()
-  const { searchText, region } = useAppSelector(state => state.sort)
-  const [value, setValue] = useState(searchText);
+  const { region } = useAppSelector(state => state.app)
 
-  const handleOnChangeSearch  = (value: string) => {
-    setValue(value)
-    updateSearchValue(value)
-  }
-
-  const updateSearchValue = useCallback(
-    debounce((value: string) => {
-      dispatch(setSearchText(value));
-    }, 1000),
-    [dispatch],
-  );
-   
   console.log(region);
 
   return (
     <Wrapper>
-      <Search search={value} setSearch={handleOnChangeSearch} />
+      <Search />
       <CustomSelect
         options={options}
         placeholder="Filter by Region..."

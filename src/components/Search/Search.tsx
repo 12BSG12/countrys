@@ -1,6 +1,9 @@
-import { FC } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { IoSearch } from "react-icons/io5";
+import { debounce } from 'lodash';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { setSearchText } from '../../redux/reducers/app';
 
 const InputContainer = styled.label`
   display: flex;
@@ -29,18 +32,28 @@ const Input = styled.input.attrs({
   color: var(--colors-text);
 `;
 
-interface ISearch {
-  search: string;
-  setSearch: (e: string) => void;
-}
+export const Search = () => {
+  const dispatch = useAppDispatch()
+  const { searchText } = useAppSelector(state => state.app)
+  const [value, setValue] = useState(searchText);
 
-export const Search: FC<ISearch> = ({ search, setSearch }) => {
+  const handleOnChangeSearch  = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value)
+    updateSearchValue(e.target.value)
+  }
+
+  const updateSearchValue = useCallback(
+    debounce((value: string) => {
+      dispatch(setSearchText(value));
+    }, 1000),
+    [dispatch],
+  );
   return (
     <InputContainer>
       <IoSearch />
       <Input
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        value={value}
+        onChange={handleOnChangeSearch}
       />
     </InputContainer>
   );

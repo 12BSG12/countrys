@@ -69,3 +69,8 @@ export interface ICountry {
   region: string;
   capital: string;
 }
+
+export type argTypeCountry = {
+  searchText: string;
+  region: string;
+}

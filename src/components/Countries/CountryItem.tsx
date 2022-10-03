@@ -5,10 +5,11 @@ import { ICountry } from '../../model/countriesAPIType';
 
 const Cart = styled.div`
   width: 100%;
+  height: 330px;
   background-color: var(--colors-ui-base);
   border-radius: var(--radii);
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   &:hover {
     transform: scale(1.03);
   }
@@ -49,18 +50,22 @@ export const CountryItem: FC<ICountry> = ({ flags, name, population, region, cap
         </CartImg>
         <CartInfo>
           <h2>{name}</h2>
-          <div>
-            <span>Population:</span>
-            <p>{population}</p>
-          </div>
+          {population !== 0 && (
+            <div>
+              <span>Population:</span>
+              <p>{population}</p>
+            </div>
+          )}
           <div>
             <span>Region:</span>
             <p>{region}</p>
           </div>
-          <div>
-            <span>Capital:</span>
-            <p>{capital}</p>
-          </div>
+          {capital && (
+            <div>
+              <span>Capital:</span>
+              <p>{capital}</p>
+            </div>
+          )}
         </CartInfo>
       </Cart>
     </Link>

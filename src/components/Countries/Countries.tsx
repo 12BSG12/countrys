@@ -12,7 +12,7 @@ const Grid = styled.div`
 `;
 
 export const Countries = () => {
-  const { searchText, region } = useAppSelector((state) => state.sort);
+  const { searchText, region } = useAppSelector((state) => state.app);
   const { data = [], isLoading, isFetching } = useGetCountriesQuery({
     searchText: searchText && `name/${searchText.toLowerCase()}`,
     region: region && `region/${region}`,
