@@ -6,11 +6,6 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  a {
-    position: absolute;
-    top: 50px;
-    left: 0;
-  }
   @media (max-width: 767px) {
     flex-direction: column;
   }
@@ -33,6 +28,9 @@ export const Info = styled.div`
   width: 50%;
 `;
 export const BackBtn = styled.button`
+position: absolute;
+  top: 50px;
+  left: 0;
   padding: 0 1rem;
   background-color: var(--colors-ui-base);
   box-shadow: var(--shadow);

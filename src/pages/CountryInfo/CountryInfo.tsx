@@ -34,12 +34,10 @@ export const CountryInfo = () => {
   return (
     <Container>
       <Wrapper>
-        <Link to="/">
-          <BackBtn>
-            <IoArrowBack size="20px" />
-            Back
-          </BackBtn>
-        </Link>
+        <BackBtn onClick={() => navigate(-1)}>
+          <IoArrowBack size="20px" />
+          Back
+        </BackBtn>
         {isLoading || isFetching ? (
           <ThreeDots />
         ) : (
