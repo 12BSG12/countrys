@@ -1,15 +1,8 @@
 import { CountryItem } from './CountryItem';
 import { useGetCountriesQuery } from '../../redux';
-import styled from 'styled-components';
 import { useAppSelector } from '../../hooks/hooks';
-import Preloader from '../../common/Preloader';
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  grid-template-rows: repeat(1, 1fr);
-  gap: 40px;
-`;
+import { Grid } from './styles';
+import { Skeleton } from './Skeleton';
 
 export const Countries = () => {
   const { searchText, region } = useAppSelector((state) => state.app);
@@ -23,16 +16,10 @@ export const Countries = () => {
   });
 
   return (
-    <>
-      {isLoading || isFetching ? (
-        <Preloader />
-      ) : (
-        <Grid>
-          {data.map((item, index) => (
-            <CountryItem key={index} {...item} />
-          ))}
-        </Grid>
-      )}
-    </>
+    <Grid>
+      {isLoading || isFetching
+        ? [...Array(250)].map((_, index) => <Skeleton key={index} />)
+        : data.map((item, index) => <CountryItem key={index} {...item} />)}
+    </Grid>
   );
 };

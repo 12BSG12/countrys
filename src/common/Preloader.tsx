@@ -1,12 +1,5 @@
 import ContentLoader from 'react-content-loader'
-import styled from 'styled-components';
-
-const Center = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
+import { Center } from './styles'
 
 const ThreeDots = () => (
   <Center>
