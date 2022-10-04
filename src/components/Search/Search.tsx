@@ -34,7 +34,7 @@ const Input = styled.input.attrs({
 
 export const Search = () => {
   const dispatch = useAppDispatch()
-  const { searchText } = useAppSelector(state => state.app)
+  const { searchText, region } = useAppSelector(state => state.app)
   const [value, setValue] = useState(searchText);
 
   const handleOnChangeSearch  = (e: ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +52,7 @@ export const Search = () => {
     <InputContainer>
       <IoSearch />
       <Input
+        disabled={region ? true : false}
         value={value}
         onChange={handleOnChangeSearch}
       />

@@ -26,14 +26,14 @@ export const Controls = () => {
     { value: 'oceania', label: 'Oceania' },
   ];
   const dispatch = useAppDispatch()
-  const { region } = useAppSelector(state => state.app)
-
-  console.log(region);
-
+  const { region, searchText } = useAppSelector(state => state.app)
+  
   return (
     <Wrapper>
       <Search />
       <CustomSelect
+        isDisabled={ searchText ? true : false }
+        isSearchable={false}
         options={options}
         placeholder="Filter by Region..."
         isClearable

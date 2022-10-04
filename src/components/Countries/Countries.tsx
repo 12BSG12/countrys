@@ -2,7 +2,7 @@ import { CountryItem } from './CountryItem';
 import { useGetCountriesQuery } from '../../redux';
 import styled from 'styled-components';
 import { useAppSelector } from '../../hooks/hooks';
-import Preloader from '../../common/Preloader'
+import Preloader from '../../common/Preloader';
 
 const Grid = styled.div`
   display: grid;
@@ -13,7 +13,11 @@ const Grid = styled.div`
 
 export const Countries = () => {
   const { searchText, region } = useAppSelector((state) => state.app);
-  const { data = [], isLoading, isFetching } = useGetCountriesQuery({
+  const {
+    data = [],
+    isLoading,
+    isFetching,
+  } = useGetCountriesQuery({
     searchText: searchText && `name/${searchText.toLowerCase()}`,
     region: region && `region/${region}`,
   });

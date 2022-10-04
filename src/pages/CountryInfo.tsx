@@ -15,29 +15,42 @@ const Wrapper = styled.div`
     top: 50px;
     left: 0;
   }
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
 `;
 
 const IMG = styled.img.attrs((props) => ({
   src: props.src || '',
 }))`
+  display: block;
   width: 50%;
+  height: 100%;
+  object-fit: contain;
   margin-right: 80px;
+  @media (max-width: 767px) {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 `;
 const Info = styled.div`
   width: 50%;
 `;
 const BackBtn = styled.button`
-  width: 110px;
-  padding: 8px 0;
+  padding: 0 1rem;
+  background-color: var(--colors-ui-base);
+  box-shadow: var(--shadow);
+  line-height: 2.5;
+  border-radius: var(--radii);
+  border: none;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.75rem;
+  color: var(--color-text);
+  cursor: pointer;
   svg {
     margin-right: 5px;
   }
-  background-color: var(--colors-ui-base);
-  color: var(--colors-text);
-  border-radius: var(--radii);
 `;
 const Title = styled.h1`
   font-size: 25px;
@@ -60,20 +73,24 @@ const Text = styled.div`
 `;
 
 const BorderCountries = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 10px;
   font-size: var(--fs-sm);
   span {
+    align-self: center;
     font-weight: var(--fw-bold);
   }
 `;
 
 const BorderBtn = styled.button`
-  width: 110px;
-  padding: 8px 0;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  padding: 0.4rem 0;
   background-color: var(--colors-ui-base);
-  color: var(--colors-text);
   border-radius: var(--radii);
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
 `;
 
 export const CountryInfo = () => {
